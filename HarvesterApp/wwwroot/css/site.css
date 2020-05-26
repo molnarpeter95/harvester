@@ -69,3 +69,25 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.main-page h1 {
+  font-size: 32px;
+}
+
+.main-page h2 {
+  font-size: 16px;
+  color: #323232;
+}
+
+.main-page h3 {
+  font-size: 14px;
+  color: #646464;
+}
+
+.main-page .date {
+  border: 1px solid #323232;
+}
+
+.main-page .daily-list .list-item {
+  border: 1px dashed #323232;
+}
