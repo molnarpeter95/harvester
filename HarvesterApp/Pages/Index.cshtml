@@ -4,6 +4,19 @@
     ViewData["Title"] = "Próba feladat";
 }
 
+@{ //Adding the current day and the 3 before / after days to fill a whole week
+    string d1 = DateTime.Now.AddDays(-3).DayOfWeek.ToString();
+    string d2 = DateTime.Now.AddDays(-2).DayOfWeek.ToString();
+    string d3 = DateTime.Now.AddDays(-1).DayOfWeek.ToString();
+    string d4 = DateTime.Now.DayOfWeek.ToString();
+    string d5 = DateTime.Now.AddDays(+1).DayOfWeek.ToString();
+    string d6 = DateTime.Now.AddDays(+2).DayOfWeek.ToString();
+    string d7 = DateTime.Now.AddDays(+3).DayOfWeek.ToString();
+
+    String[] days; //making an array for the days and initialite it
+    days = new String[]{ d1, d2, d3, d4, d5, d6, d7 };
+}
+
 <div class="container-fluid main-page">
     <div class="row">
         <div class="col-12 text-center my-4">
@@ -11,11 +24,12 @@
         </div>
     </div>
     <div class="row mt-4">
+        @foreach (var item in days) {
         <div class="col">
             <div class="date p-2">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="m-0">name of the day</h2>
+                        <h2 class="m-0">@item</h2>
                     </div>
                     <div class="col-12">
                         <h3 class="m-0">date</h3>
@@ -23,78 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="date p-2">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="m-0">name of the day</h2>
-                    </div>
-                    <div class="col-12">
-                        <h3 class="m-0">date</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="date p-2">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="m-0">name of the day</h2>
-                    </div>
-                    <div class="col-12">
-                        <h3 class="m-0">date</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="date p-2">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="m-0">name of the day</h2>
-                    </div>
-                    <div class="col-12">
-                        <h3 class="m-0">date</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="date p-2">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="m-0">name of the day</h2>
-                    </div>
-                    <div class="col-12">
-                        <h3 class="m-0">date</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="date p-2">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="m-0">name of the day</h2>
-                    </div>
-                    <div class="col-12">
-                        <h3 class="m-0">date</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="date p-2">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="m-0">name of the day</h2>
-                    </div>
-                    <div class="col-12">
-                        <h3 class="m-0">date</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
     </div>
     <div class="row mt-4">
         <div class="col-10 mx-auto daily-list">
