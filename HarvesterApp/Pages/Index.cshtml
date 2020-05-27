@@ -4,17 +4,15 @@
     ViewData["Title"] = "Próba feladat";
 }
 
-@{ //Adding the current day and the 3 before / after days to fill a whole week
-    string d1 = DateTime.Now.AddDays(-3).DayOfWeek.ToString();
-    string d2 = DateTime.Now.AddDays(-2).DayOfWeek.ToString();
-    string d3 = DateTime.Now.AddDays(-1).DayOfWeek.ToString();
-    string d4 = DateTime.Now.DayOfWeek.ToString();
-    string d5 = DateTime.Now.AddDays(+1).DayOfWeek.ToString();
-    string d6 = DateTime.Now.AddDays(+2).DayOfWeek.ToString();
-    string d7 = DateTime.Now.AddDays(+3).DayOfWeek.ToString();
+@{ //making an array of the name of the days
+    int i = -3, k = 0; //i: 3rd day before today; k = variable for the loop
+    String[] days; //making the array
+    days = new String[7]; //initialize
 
-    String[] days; //making an array for the days and initialite it
-    days = new String[]{ d1, d2, d3, d4, d5, d6, d7 };
+    for (i = -3; i < 4; i++) { //loop, starting from the 3rd day before today, ends at the 3rd day after today (one week)
+        days[k] = DateTime.Now.AddDays(i).DayOfWeek.ToString(); //putting the nem of the days in the array
+        k++;
+    }
 }
 
 <div class="container-fluid main-page">
@@ -24,7 +22,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        @foreach (var item in days) {
+        @foreach (var item in days) { //displaying the days in the frontend
         <div class="col">
             <div class="date p-2">
                 <div class="row">
