@@ -5,24 +5,24 @@
 }
 
 @{ //making an array of the name of the days
-    int i = -3, k = 0; //i: 3rd day before today; k = variable for the loop
-    
-    String[] days; //making the array
-    days = new String[7]; //initialize
+    int diffInDays = -3, indexToFill = 0; //i: 3rd day before today; k = variable for the loop
+
+    String[] days;
+    days = new String[7];
 
     String[] dates;
     dates = new String[7];
 
-    for (i = -3; i < 4; i++) { //loop, starting from the 3rd day before today, ends at the 3rd day after today (one week)
-        days[k] = DateTime.Now.AddDays(i).DayOfWeek.ToString(); //putting the nem of the days in the array
-        k++;
+    for (diffInDays = -3; diffInDays < 4; diffInDays++) { //loop, starting from the 3rd day before today, ends at the 3rd day after today (one week)
+        days[indexToFill] = DateTime.Now.AddDays(diffInDays).DayOfWeek.ToString(); //putting the nem of the days in the array
+        indexToFill++;
     }
 
-    k = 0; //setting back k to 0, just to use for the second loop below
+    indexToFill = 0; //setting back indexToFill to 0, just to use for the second loop below
 
-    for(i = -3; i < 4; i++){ //loop, doing the same as with the days. Adding the dates to each of the days
-        dates[k] = DateTime.Now.AddDays(i).ToString("MM.dd"); //Date time will be shown as month / day only
-        k++;
+    for (diffInDays = -3; diffInDays < 4; diffInDays++){ //loop, doing the same as with the days. Adding the dates to each of the days
+        dates[indexToFill] = DateTime.Now.AddDays(diffInDays).ToString("MM.dd"); //Date time will be shown as month / day only
+        indexToFill++;
     }
 }
 
@@ -33,24 +33,21 @@
         </div>
     </div>
     <div class="row mt-4">
-        <!--Displaying the days and dates with the for loop-->
-        @for (int l = 0; l < 7; l++) {
-        <div class="col">
-            <div class="date p-2">
-                <div class="row">
-                    <div class="col-12">
-                        @if(l == 3) {
-                            <h2 class="m-0">@days[l] (today)</h2><!--If the loopindex is 3, then write today-->
-                        } else {
-                           <h2 class="m-0">@days[l]</h2> 
-                        }
-                    </div>
-                    <div class="col-12">
-                        <h3 class="m-0">@dates[l]</h3>
+        @for (int dayIndex = 0; dayIndex < 7; dayIndex++) {
+            <div class="col">
+                <div class="date p-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="m-0">
+                                @days[dayIndex]
+                            </h2>
+                        </div>
+                        <div class="col-12">
+                            <h3 class="m-0">@dates[dayIndex]</h3>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         }
     </div>
     <div class="row mt-4">
